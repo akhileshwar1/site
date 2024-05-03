@@ -3,3 +3,32 @@
 .*class
 .*lst
 .*prefs
+*.edn
+*.sh
+*.clj-kondo/
+*.lsp/
+
+# Leiningen build files
+/target/
+/pom.xml
+/pom.xml.asc
+*.jar
+*.class
+*.war
+
+# Leiningen plugin meta data
+/lib/
+/classes/
+/checkouts/
+
+# Logs
+logs
+*.log
+
+# Local development
+.nrepl-port
+.cpcache/
+.repl/
+.lein-plugins/
+.lein-failures
+.lein-repl-history
