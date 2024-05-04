@@ -13,7 +13,8 @@
                  [metosin/reitit "0.7.0"]
                  [com.novemberain/monger "3.5.0"]
                  [environ "1.2.0"]
-                 [nrepl/nrepl "0.9.0"]]
+                 [nrepl/nrepl "0.9.0"]
+                 [cheshire "5.13.0"]]
   :main ^:skip-aot backend.core
   :resource-paths ["resources"]
   :target-path "target/%s"
