@@ -12,7 +12,8 @@
   (ring/ring-handler
     (ring/router
       ["/"
-       ["posts" {:get {:handler (handlers/get-posts-handler conn)}}]]
+       ["posts" {:get {:parameters {:query {:page int? :limit int?}}
+                       :handler (handlers/get-posts-handler conn)}}]]
 
       ;; router data affecting all routes
       {:data {:coercion   reitit.coercion.spec/coercion

@@ -1,6 +1,6 @@
 (ns backend.post
   (:require [clojure.tools.logging :as log]
-            [monger.collection :as mc]))
+            [monger.query :refer [find paginate with-collection]]))
 
 (defrecord Post [title author content date])
 
@@ -23,9 +23,11 @@
 
 
 (defn get-posts
-  "Gets the posts."
-  [conn]
+  "Gets the posts for a particular page."
+  [conn page limit]
   (let [coll "posts"
-        result (mc/find-one-as-map (:db conn) coll {:author "Akhil Kandi"})
+        result (with-collection (:db conn) coll
+                 (find {})
+                 (paginate :page page :per-page limit))
         _ (log/info "result is=========" result)]
-    (transform-result result)))
+    (map transform-result result)))

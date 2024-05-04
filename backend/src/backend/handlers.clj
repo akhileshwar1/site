@@ -4,7 +4,10 @@
 
 (defn get-posts-handler
   [conn]
-  (fn [_req]
-    (->> (get-posts conn)
+  (fn [req]
+    (->> (:query-params req)
+         (vals)
+         (map #(Integer/parseInt %))
+         (apply (partial get-posts conn))
          (into {})
          (resp/response))))
