@@ -12,12 +12,15 @@
                  [integrant "0.9.0"]
                  [metosin/reitit "0.7.0"]
                  [com.novemberain/monger "3.5.0"]
-                 [environ "1.2.0"]]
+                 [environ "1.2.0"]
+                 [nrepl/nrepl "0.9.0"]]
   :main ^:skip-aot backend.core
   :resource-paths ["resources"]
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all
                        :jvm-opts ["-Dclojure.compiler.direct-linking=true"]}
              :dev {:source-paths ["dev"]
-                   :dependencies [[org.clojure/tools.namespace "0.2.3"]
-                                  [org.clojure/java.classpath "0.2.0"]]}})
+                   :dependencies [[org.clojure/clojure "1.11.1"]
+                                  [org.clojure/tools.namespace "0.2.3"]
+                                  [org.clojure/java.classpath "0.2.0"]]
+                   :repl-options {:init-ns user}}})

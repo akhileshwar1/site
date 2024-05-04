@@ -10,7 +10,7 @@
 (defmethod ig/init-key :mongo/connection [_ config]
   (mg/connect-via-uri (:uri config)))
 
-(defmethod ig/halt-key! :mongo/connection [_ conn]
+(defmethod ig/halt-key! :mongo/connection [_ {:keys [conn _db]}]
   (mg/disconnect conn))
 
 (defmethod ig/init-key :adapter/jetty

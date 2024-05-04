@@ -22,6 +22,10 @@
   (alter-var-root #'system
     (fn [s] (when s (ig/halt! s)))))
 
-(defn reset []
+(defn reset
+  "The JVM stops the current system instance, reloads the bytecode of the files
+  that have changed, and then starts the system again."
+
+  []
   (stop)
   (refresh :after 'user/start))
