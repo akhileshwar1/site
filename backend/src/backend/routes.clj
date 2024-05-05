@@ -6,10 +6,11 @@
             [reitit.ring.coercion :as rrc]
             [reitit.ring.middleware.muuntaja :as muuntaja]
             [reitit.ring.middleware.parameters :as parameters]
+            [ring.middleware.cors :refer [wrap-cors]]
             [backend.middleware :refer [wrap-custom-json-response]]
             [backend.handlers :as handlers]))
 
-(defn app
+(defn handler
   [conn]
   (ring/ring-handler
     (ring/router
@@ -30,3 +31,9 @@
                            wrap-custom-json-response
                            json/wrap-json-body
                            json/wrap-json-response]}})))
+
+(defn app
+  [conn]
+  (-> (handler conn)
+      (wrap-cors :access-control-allow-origin [#".*"]
+                 :access-control-allow-methods [:get :post :put :delete])))
