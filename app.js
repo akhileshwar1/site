@@ -39,46 +39,34 @@ function loadPosts() {
       if (data.length === 0) {
         container.innerHTML = '<p>No posts available.</p>'; // Display no posts message
       } else {
-        // Iterate through each post data
+        // iterate through each post data
         data.forEach(post => {
           const postElement = document.createElement('div');
-          postElement.className = 'post';
+          postElement.className = 'horizontal-left-container';
 
           const title = document.createElement('h3');
           title.textContent = post.title;
-
-          const preview = document.createElement('p');
-          // Assuming post.content is a string with the full content
-          preview.textContent = post.content.substring(0, 100) + '...'; // Show first 100 characters
+          title.addEventListener('click', function() {
+            if (fullContent.style.display === 'none') {
+              fullContent.style.display = 'block'; // Show full content
+            }
+            else{
+              fullContent.style.display = 'none';
+            }
+          }); 
 
           const fullContent = document.createElement('p');
           fullContent.textContent = post.content;
           fullContent.style.display = 'none'; // Hide full content initially
 
-          const readMore = document.createElement('button');
-          readMore.textContent = 'Read More';
-          readMore.onclick = function() {
-            if (fullContent.style.display === 'none') {
-              fullContent.style.display = 'block'; // Show full content
-              preview.style.display = 'none'; // Hide preview
-              readMore.textContent = 'Read Less';
-            } else {
-              fullContent.style.display = 'none'; // Hide full content
-              preview.style.display = 'block'; // Show preview
-              readMore.textContent = 'Read More';
-            }
-          };
-
           postElement.appendChild(title);
-          postElement.appendChild(preview);
           postElement.appendChild(fullContent);
-          postElement.appendChild(readMore);
           container.appendChild(postElement);
         });
       }
     })
     .catch(error => {
       console.error('Error fetching posts:', error); // Log errors to the console
-      document.getElementById('blog-container').innerHTML = '<p>Error loading posts.</p>'; // Display error message
+      document.getElementById('posts-container').innerHTML = '<p>Error loading posts.</p>'; // Display error message
     });
 }

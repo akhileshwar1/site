@@ -1,30 +1,71 @@
 html{
   background: #370b47;
+  ine-height:1.5;
+  -webkit-text-size-adjust:100%;
+  -moz-tab-size:4;
+  tab-size:4;
+  font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+  font-feature-settings:normal;
+  font-variation-settings:normal
 }
 
-body, title, h1, h2, h3, li, ul, header, footer, a {
-  font-family: "Arial", sans-serif;
+/* Base font size */
+body {
+  font-size: 10px;
+}
+
+/* Larger font size for larger screens */
+@media (min-width: 768px) {
+  body {
+    font-size: 12px;
+  }
+}
+
+/* Even larger font size for desktop screens */
+@media (min-width: 1024px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+h1 {
+    font-size: 2rem; /* Responsive based on the body font size */
+  }
+  p, a {
+    font-size: 1em; /* Matches the body font size */
+  }
+  .small-text {
+    font-size: 0.8em; /* Smaller text */
+  }
+
+body {
+  width: 100%;          /* Ensures the body takes the full width of the viewport */
+  max-width: 340px;     /* Sets the maximum width of the body content */
+  margin: 0 auto;       /* Centers the body within the viewport */
+  padding: 0 20px;      /* Optional: Adds some padding inside the body */
+  color: #f4f4f4;
+}
+
+title, h1, h2, h3, li, ul, header, footer, a {
   line-height: 1.6;
   margin: 0;
   padding: 0;
   color: #f4f4f4;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    color: white; /* Keeps headings white */
+    transition: text-decoration-color 0.3s; /* Smooth transition for hover effect */
+}
+
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
+    text-decoration: underline;
+    text-decoration-color: white; /* Underline color, can be different like gold or light purple */
+}
+
 header {
   padding: 10px 20px;
   text-align: center;
-}
-
-nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-}
-
-nav li {
-    padding: 10px 50px; /* Adds horizontal padding */
 }
 
 nav a {
@@ -37,11 +78,32 @@ nav a:hover {
     color: #ccc; /* Changes color on hover */
 }
 
+/* aligns the vertically flowing content on the center of the perpendicular axis */
 .vertical-centered-container{
   display: flex; /* property which helps set how the element uses the width and length */
   flex-direction: column;
-  justify-content: space-around; /* there is a flex-axis that you can align child elems with */
+  justify-content: center;
+  width: 100%; /* Take full width to control layout properly */
   align-items: center; /* aligns perpendicular to flex-axis, complementatry to justigy above */
+}
+
+/* justifies the horizontally flowing content on the same axis on the left side */
+.horizontal-left-container{
+  display: flex; /* property which helps set how the element uses the width and length */
+  justify-content: flex-start;
+  align-items:center;
+  width: 100%; /* Take full width to control layout properly */
+}
+
+.horizontal-left-container ul {
+  padding-left: 0; /* Removes padding to align correctly to the left */
+}
+
+/* Style for individual navigation items */
+.horizontal-left-container li {
+  list-style-type: none; /* Removes bullet points */
+  display: inline-block; /* Inline-block for horizontal layout */
+  margin-right: 10px; /* Adds space between items */
 }
 
 .centered-container{
