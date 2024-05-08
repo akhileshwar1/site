@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log("i am here");
 
   // add an event listener for the tech option click.
-  document.getElementById("tech-posts").addEventListener("click", function(event) {
+  document.getElementById("posts").addEventListener("click", function(event) {
     console.log("i am here hettttttttttttt");
     event.preventDefault(); 
 
@@ -34,6 +34,7 @@ function loadPosts() {
     .then(data => {
       const container = document.getElementById('posts-container'); // Get the container
       container.innerHTML = ''; // Clear previous contents
+      container.style.display = 'grid';
 
       // Check if the data array is empty
       if (data.length === 0) {
@@ -41,11 +42,12 @@ function loadPosts() {
       } else {
         // iterate through each post data
         data.forEach(post => {
-          const postElement = document.createElement('div');
-          postElement.className = 'horizontal-left-container';
+          const postElement = document.createElement('article');
+          postElement.className = 'mb-32 mt-10 bg-card text-card-foreground overflow-hidden hover:bg-zinc-50';
 
-          const title = document.createElement('h3');
+          const title = document.createElement('p');
           title.textContent = post.title;
+          title.className = 'font-semibold leading-none';
           title.addEventListener('click', function() {
             if (fullContent.style.display === 'none') {
               fullContent.style.display = 'block'; // Show full content
