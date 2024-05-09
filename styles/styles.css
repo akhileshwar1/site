@@ -20,7 +20,7 @@ html{
 }
 
 /* Base font size */
-body {    
+body {
   font-family: '__Plus_Jakarta_Sans_e3c363', sans-serif;
   font-size: 12px;
 }
@@ -57,7 +57,7 @@ img {
 }
 
 body {
-  width: 80%;          /* Ensures the body takes the full width of the viewport */
+  width: 80%;
   max-width: 550px;     /* Sets the maximum width of the body content */
   margin: 0 auto;       /* Centers the body within the viewport */
   padding: 0 10px;      /* Optional: Adds some padding inside the body */
@@ -117,7 +117,7 @@ h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover, a:hover {
   list-style-type: none; /* Removes bullet points */
   display: inline-block; /* Inline-block for horizontal layout */
   justify-content: space-around;
-  padding-right: 4px; /* for the space between the li items */
+  padding-right: 6px; /* for the space between the li items */
 }
 
 .centered-container{
@@ -158,6 +158,31 @@ h6 {
 .text-sm {
   font-size:.875rem;
   line-height:1.25rem
+}
+
+.text-xl {
+  font-size:1rem;
+  line-height:1rem
+}
+
+.border-neutral-200 {
+  --tw-border-opacity:1;
+  margin: 1.25rem auto;
+  border-color:rgb(229 229 229/var(--tw-border-opacity))
+}
+
+.mx-auto {
+  margin-left:auto;
+  margin-right:auto
+}
+
+.center {
+  width: 100%;
+  margin: 10% 50%;
+}
+
+.max-w-3xl {
+  max-width:48rem
 }
 
 .max-w-md {

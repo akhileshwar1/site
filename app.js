@@ -28,47 +28,89 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function loadPosts() {
-  // Fetch data from the server
   fetch('http://localhost:8080/posts?page=1&limit=10')
-    .then(response => response.json()) // Convert the response to JSON
+    .then(response => response.json())
     .then(data => {
       const container = document.getElementById('posts-container'); // Get the container
       container.innerHTML = ''; // Clear previous contents
       container.style.display = 'grid';
 
-      // Check if the data array is empty
       if (data.length === 0) {
-        container.innerHTML = '<p>No posts available.</p>'; // Display no posts message
+        container.innerHTML = '<p>No posts available.</p>';
       } else {
-        // iterate through each post data
         data.forEach(post => {
-          const postElement = document.createElement('article');
-          postElement.className = 'mb-32 mt-10 bg-card text-card-foreground overflow-hidden hover:bg-zinc-50';
+          const postElement = document.createElement('div');
+          postElement.className = 'mb-32 mt-10';
 
+          const card = document.createElement('div');
+          card.className = 'bg-card text-card-foreground overflow-hidden hover:bg-zinc-50';
           const title = document.createElement('p');
+          title.className = "font-semibold leading-none";
           title.textContent = post.title;
-          title.className = 'font-semibold leading-none';
-          title.addEventListener('click', function() {
-            if (fullContent.style.display === 'none') {
-              fullContent.style.display = 'block'; // Show full content
-            }
-            else{
-              fullContent.style.display = 'none';
-            }
-          }); 
 
-          const fullContent = document.createElement('p');
-          fullContent.textContent = post.content;
+          card.appendChild(title);
+
+          const fullContent = document.createElement('article');
           fullContent.style.display = 'none'; // Hide full content initially
 
-          postElement.appendChild(title);
+          const heading = document.createElement('div');
+          heading.textContent = post.title;
+          heading.className = "font-bold text-xl";
+
+          const border = document.createElement('hr');
+          border.className = "border-neutral-200";
+
+          const postBody = document.createElement('div');
+          postBody.textContent = post.content;
+          postBody.className = "mx-auto max-w-3xl";
+
+          fullContent.appendChild(heading);
+          fullContent.appendChild(border);
+          fullContent.appendChild(postBody);
+
+          const backLink = document.createElement('div');
+          backLink.style.display = 'none'; // hidden at the start.
+          backLink.className = "center";
+
+          const backText = document.createElement('h3');
+          backText.className = "font-mono";
+          backText.textContent = 'Back';
+          backText.style.cursor = 'pointer';
+
+          backLink.appendChild(backText);
+
+          card.addEventListener('click', function() {
+            // Hide other post titles and show content for clicked title
+            document.querySelectorAll('.post-card').forEach(t => {
+              if (t !== title) {
+                t.style.display = 'none'; // Hide other titles
+              }
+            });
+
+            fullContent.style.display = ''; // Show full content for this post
+            backLink.style.display = ''; // Show back link
+          });
+
+          backLink.onclick = function() {
+            // Show all post titles and hide full content when back is clicked
+            document.querySelectorAll('.post-card').forEach(t => {
+              t.style.display = ''; // Show all titles
+            });
+
+            fullContent.style.display = 'none'; // Hide full content
+            backLink.style.display = 'none'; // Hide back link
+          };
+
+          postElement.appendChild(card);
+          card.classList.add('post-card'); // Add class for easier selection
           postElement.appendChild(fullContent);
+          postElement.appendChild(backLink);
           container.appendChild(postElement);
         });
       }
     })
     .catch(error => {
-      console.error('Error fetching posts:', error); // Log errors to the console
-      document.getElementById('posts-container').innerHTML = '<p>Error loading posts.</p>'; // Display error message
+      console.error('Error fetching posts:', error);
+      container.innerHTML = '<p>Error loading posts.</p>';
     });
 }
