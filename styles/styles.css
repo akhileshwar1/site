@@ -17,6 +17,7 @@ html{
   --muted-foreground:220 8.9% 46.1%;
   --card:0 0% 100%;
   --card-foreground:224 71.4% 4.1%;
+  --radius:0.5rem;
 }
 
 /* Base font size */
@@ -24,6 +25,8 @@ body {
   font-family: '__Plus_Jakarta_Sans_e3c363', sans-serif;
   font-size: 12px;
 }
+
+
 
 /* Larger font size for larger screens */
 @media (min-width: 768px) {
@@ -63,6 +66,14 @@ body {
   padding: 0 10px;      /* Optional: Adds some padding inside the body */
 }
 
+/* max-width for smaller screens */
+@media (max-width: 450px) {
+  body {
+    font-size: 15px;
+    max-width: 300px;
+  }
+}
+
 title, h1, h2, h3, li, ul, header, footer, a {
   margin: 0;
   padding: 0;
@@ -97,7 +108,7 @@ h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover, a:hover {
   justify-content: center;
   width: 100%; /* Take full width to control layout properly */
   align-items: flex-start; /* aligns perpendicular to flex-axis, complementary to justigy above */
-  margin-top: 30px;
+  margin-top: 15px;
 }
 
 /* justifies the horizontally flowing content on the same axis on the left side */
@@ -107,9 +118,16 @@ h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover, a:hover {
   width: 100%; /* Take full width to control layout properly */
 }
 
+.horizontal-title-container{
+  display: flex;
+  justify-content: space-between;
+  width: 100%; /* Take full width to control layout properly */
+}
+
 .horizontal-left-container ul {
   padding-left: 0; /* Removes padding to align correctly to the left */
-  margin-left: 0;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
 }
 
 /* Style for individual navigation items */
@@ -122,8 +140,9 @@ h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover, a:hover {
 
 .centered-container{
   display: flex; /* property which helps set how the element uses the width and length */
-  justify-content: space-around;
+  justify-content: center;
   align-items: center; 
+  margin-top: 10rem;
 }
 .font-bold {
   font-weight:700
@@ -165,10 +184,19 @@ h6 {
   line-height:1rem
 }
 
+.text-2xl {
+  font-size:1.5rem;
+  line-height:2rem
+}
+
 .border-neutral-200 {
   --tw-border-opacity:1;
   margin: 1.25rem auto;
   border-color:rgb(229 229 229/var(--tw-border-opacity))
+}
+
+.rounded-lg {
+  border-radius:var(--radius)
 }
 
 .mx-auto {
@@ -176,9 +204,14 @@ h6 {
   margin-right:auto
 }
 
-.center {
-  width: 100%;
-  margin: 10% 50%;
+.mx-small {
+  margin-left:0.25rem;
+  margin-right:0.25rem;
+}
+
+.mx-med{
+  margin-left:0.55rem;
+  margin-right:0.55rem;
 }
 
 .max-w-3xl {
@@ -193,12 +226,26 @@ h6 {
   margin-bottom:0.05rem
 }
 
+.tabular-nums {
+  --tw-numeric-spacing:tabular-nums;
+  font-variant-numeric:var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction)
+}
+
+.text-zinc-400 {
+  --tw-text-opacity:1;
+  color:rgb(161 161 170/var(--tw-text-opacity))
+}
+
 .mt-10 {
   margin-top:0.05rem
 }
 
 .bg-card {
   background-color:hsl(var(--card))
+}
+
+.flex-col {
+  flex-direction:column
 }
 
 .text-card-foreground {
@@ -217,8 +264,7 @@ h6 {
     display: grid;
     grid-template-columns: 1fr; /* Creates one column that takes full width */
     gap: 10px; /* Adds space between rows */
-    margin: 20px;
-    width: 100%;
+    max-width: 100%;
 }
 
 .leading-none {

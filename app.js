@@ -6,11 +6,11 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("i am here hettttttttttttt");
     event.preventDefault(); 
 
-    const postsContainer = document.getElementById("posts-container");
+    const postsPage = document.getElementById("posts-page");
     const homeContainer = document.getElementById("home-container");
-    if (postsContainer.style.display == 'none') {
+    if (postsPage.style.display == 'none') {
       loadPosts();
-      postsContainer.style.display = 'flex'; // Make the container visible
+      postsPage.style.display = 'block'; // Make the container visible
       homeContainer.style.display = 'none'; // Make the container visible
     }
   });
@@ -18,19 +18,33 @@ document.addEventListener('DOMContentLoaded', function() {
   //add an event listener for the home option click.
   document.getElementById("home").addEventListener("click", function(){
     const homeContainer = document.getElementById("home-container");
-    const postsContainer = document.getElementById("posts-container");
+    const postsPage = document.getElementById("posts-page");
     if(homeContainer.style.display == 'none'){
       homeContainer.style.display = "flex";
-      postsContainer.style.display = "none";
+      postsPage.style.display = "none";
     }
   });
 
 });
 
+function formatDate(dateString) {
+    const date = new Date(dateString);
+
+    //format to "Month Day, Year"
+    return date.toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+    });
+}
+
 function loadPosts() {
   fetch('http://localhost:8080/posts?page=1&limit=10')
     .then(response => response.json())
     .then(data => {
+      const pageHeading = document.getElementById("posts-heading");
+      pageHeading.style.display = "block";
+
       const container = document.getElementById('posts-container'); // Get the container
       container.innerHTML = ''; // Clear previous contents
       container.style.display = 'grid';
@@ -39,14 +53,26 @@ function loadPosts() {
         container.innerHTML = '<p>No posts available.</p>';
       } else {
         data.forEach(post => {
+          const date = formatDate(post.date);
+
           const postElement = document.createElement('div');
           postElement.className = 'mb-32 mt-10';
 
           const card = document.createElement('div');
-          card.className = 'bg-card text-card-foreground overflow-hidden hover:bg-zinc-50';
-          const title = document.createElement('p');
-          title.className = "font-semibold leading-none";
-          title.textContent = post.title;
+          card.className = 'bg-card text-card-foreground rounded-lg overflow-hidden hover:bg-zinc-50';
+
+          const title = document.createElement('div');
+          title.className = 'horizontal-title-container mx-small'
+
+          const titleStart = document.createElement('p');
+          titleStart.className = "font-semibold leading-none";
+          titleStart.textContent = post.title;
+          const titleEnd = document.createElement('p');
+          titleEnd.className = "text-sm mx-med tabular-nums text-zinc-400";
+          titleEnd.textContent = date;
+
+          title.appendChild(titleStart);
+          title.appendChild(titleEnd);
 
           card.appendChild(title);
 
@@ -54,15 +80,23 @@ function loadPosts() {
           fullContent.style.display = 'none'; // Hide full content initially
 
           const heading = document.createElement('div');
-          heading.textContent = post.title;
-          heading.className = "font-bold text-xl";
+
+          const headingTitle = document.createElement('h3');
+          headingTitle.textContent = post.title;
+          headingTitle.className = "font-bold text-xl mx-small";
+          const headingDate = document.createElement('div');
+          headingDate.className = "text-sm tabular-nums mx-small text-zinc-400";
+          headingDate.textContent = date;
+
+          heading.appendChild(headingTitle);
+          heading.appendChild(headingDate);
 
           const border = document.createElement('hr');
-          border.className = "border-neutral-200";
+          border.className = "border-neutral-200 mx-small";
 
           const postBody = document.createElement('div');
           postBody.textContent = post.content;
-          postBody.className = "mx-auto max-w-3xl";
+          postBody.className = "mx-auto max-w-3xl mx-small";
 
           fullContent.appendChild(heading);
           fullContent.appendChild(border);
@@ -70,7 +104,7 @@ function loadPosts() {
 
           const backLink = document.createElement('div');
           backLink.style.display = 'none'; // hidden at the start.
-          backLink.className = "center";
+          backLink.className = "centered-container"
 
           const backText = document.createElement('h3');
           backText.className = "font-mono";
@@ -87,6 +121,10 @@ function loadPosts() {
               }
             });
 
+            // hide the posts-heading.
+            const postsHeading = document.getElementById('posts-heading');
+            postsHeading.style.display = 'none';
+
             fullContent.style.display = ''; // Show full content for this post
             backLink.style.display = ''; // Show back link
           });
@@ -96,6 +134,10 @@ function loadPosts() {
             document.querySelectorAll('.post-card').forEach(t => {
               t.style.display = ''; // Show all titles
             });
+
+            // show the posts-heading.
+            const postsHeading = document.getElementById('posts-heading');
+            postsHeading.style.display = 'block';
 
             fullContent.style.display = 'none'; // Hide full content
             backLink.style.display = 'none'; // Hide back link

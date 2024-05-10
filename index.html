@@ -10,22 +10,28 @@
   <body class = "vertical-centered-container">
     <header class = "horizontal-left-container">
       <nav>
-        <ul>
+        <ul class = "mx-small">
           <li><a href="#home" id = "home"><h3 class = "font-mono font-bold">akhil</h3></a></li>
           <li><a href="#tech" id = "posts"><p class = "font-mono">posts</p></a></li>
           <li><a href="https://github.com/akhileshwar1" target="_blank" title="Visit my GitHub">
-        <i class="fab fa-github" style="font-size: 24px;"></i>
-      </a></li>
+            github
+          </a></li>
         <ul>
       </nav>
     </header>
     <div class = "vertical-left-container font-mono" id = 'home-container'>
-      <img src = "sicp-eval-apply-m.jpg"> 
-      <p> <strong class = "font-bold">hi, i'm akhil</strong></p>
-      <h3 class = "font-mono text-muted-foreground text-sm"> hey, I am here babe</h3>
+      <img src = "sicp-eval-apply-m.jpg" class= "mx-small"> 
+      <p> <strong class = "font-bold mx-small">hi, i'm akhil</strong></p>
+      <h3 class = "font-mono text-muted-foreground text-sm mx-small"> hey, I am here babe</h3>
     </div>
+    <div id = "posts-page"  class = "vertical-left-container" style = "display:none;">
+      <div id = 'posts-heading' class = "vertical-left-container" style = "display:none;">
+      <h2 class = "mx-small text-2xl font-bold">posts</h2>
+      <p class = "text-sm text-muted-foreground mx-small font-mono"> here, you can find my notes on a variety of topics.</p>
+      </div>
     <div id = "posts-container" class = "posts-grid" style = "display:none;">
-      <!--- Posts will be loaded here -->
+        <!--- Posts will be loaded here -->
+    </div>
     </div>
     <script src="app.js"></script>
   </body>
