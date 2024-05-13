@@ -39,7 +39,7 @@ function formatDate(dateString) {
 }
 
 function loadPosts() {
-  fetch('http://localhost:8080/posts?page=1&limit=10')
+  fetch('/api/posts?page=1&limit=10')
     .then(response => response.json())
     .then(data => {
       const pageHeading = document.getElementById("posts-heading");
