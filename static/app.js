@@ -1,9 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-  console.log("i am here");
 
   // add an event listener for the tech option click.
   document.getElementById("posts").addEventListener("click", function(event) {
-    console.log("i am here hettttttttttttt");
     event.preventDefault(); 
 
     const postsPage = document.getElementById("posts-page");
@@ -95,7 +93,7 @@ function loadPosts() {
           border.className = "border-neutral-200 mx-small";
 
           const postBody = document.createElement('div');
-          postBody.textContent = post.content;
+          postBody.innerHTML = post.content;
           postBody.className = "mx-auto max-w-3xl mx-small";
 
           fullContent.appendChild(heading);
