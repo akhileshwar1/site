@@ -79,9 +79,9 @@ function loadPosts() {
 
           const heading = document.createElement('div');
 
-          const headingTitle = document.createElement('h3');
+          const headingTitle = document.createElement('p');
           headingTitle.textContent = post.title;
-          headingTitle.className = "font-bold text-xl mx-small";
+          headingTitle.className = "font-bold text-2xl mx-small";
           const headingDate = document.createElement('div');
           headingDate.className = "text-sm tabular-nums mx-small text-zinc-400";
           headingDate.textContent = date;
@@ -95,6 +95,11 @@ function loadPosts() {
           const postBody = document.createElement('div');
           postBody.innerHTML = post.content;
           postBody.className = "mx-auto max-w-3xl mx-small";
+
+          // Highlight all code blocks
+          document.querySelectorAll('pre code').forEach((block) => {
+            hljs.highlightBlock(block);
+          });
 
           fullContent.appendChild(heading);
           fullContent.appendChild(border);
