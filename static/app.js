@@ -81,7 +81,7 @@ function loadPosts() {
 
           const headingTitle = document.createElement('p');
           headingTitle.textContent = post.title;
-          headingTitle.className = "font-bold text-2xl mx-small";
+          headingTitle.className = "font-bold mx-small";
           const headingDate = document.createElement('div');
           headingDate.className = "text-sm tabular-nums mx-small text-zinc-400";
           headingDate.textContent = date;
@@ -96,10 +96,7 @@ function loadPosts() {
           postBody.innerHTML = post.content;
           postBody.className = "mx-auto max-w-3xl mx-small";
 
-          // Highlight all code blocks
-          document.querySelectorAll('pre code').forEach((block) => {
-            hljs.highlightBlock(block);
-          });
+          
 
           fullContent.appendChild(heading);
           fullContent.appendChild(border);
@@ -127,6 +124,7 @@ function loadPosts() {
             // hide the posts-heading.
             const postsHeading = document.getElementById('posts-heading');
             postsHeading.style.display = 'none';
+            
 
             fullContent.style.display = ''; // Show full content for this post
             backLink.style.display = ''; // Show back link
@@ -153,6 +151,10 @@ function loadPosts() {
           container.appendChild(postElement);
         });
       }
+      // highlight all code blocks
+      document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightBlock(block);
+      });
     })
     .catch(error => {
       console.error('Error fetching posts:', error);
