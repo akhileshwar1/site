@@ -26,27 +26,9 @@ body {
   font-size: 12px;
 }
 
-/* max-width for smaller screens */
-@media (max-width: 450px) {
-  body {
-    font-size: 10px;
-    /*max-width: 300px;*/
-  }
-}
 
-/* Larger font size for larger screens */
-@media (min-width: 768px) {
-  body {
-    font-size: 15px;
-  }
-}
 
-/* Even larger font size for desktop screens */
-@media (min-width: 1024px) {
-  body {
-    font-size: 18px;
-  }
-}
+
 
 h1 {
   font-size: 2em; /* Responsive based on the body font size */
@@ -67,12 +49,32 @@ img {
 
 body {
   width: 80%;
-  max-width: 550px;     /* Sets the maximum width of the body content */
+  max-width: 700px;     /* Sets the maximum width of the body content */
   margin: 0 auto;       /* Centers the body within the viewport */
   padding: 0 10px;      /* Optional: Adds some padding inside the body */
 }
 
+/* max-width for smaller screens */
+@media (max-width: 450px) {
+  body {
+    font-size: 12px;
+    max-width: 375px;
+  }
+}
 
+/* Larger font size for larger screens */
+@media (min-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+/* Even larger font size for desktop screens */
+@media (min-width: 1024px) {
+  body {
+    font-size: 18px;
+  }
+}
 
 title, h1, h2, h3, li, ul, header, footer, a {
   margin: 0;

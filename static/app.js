@@ -54,7 +54,7 @@ function loadPosts() {
           const date = formatDate(post.date);
 
           const postElement = document.createElement('div');
-          postElement.className = 'mb-32 mt-10';
+          postElement.className = 'mb-32 mt-10 overflow-hidden';
 
           const card = document.createElement('div');
           card.className = 'bg-card text-card-foreground rounded-lg overflow-hidden hover:bg-zinc-50';
@@ -66,7 +66,7 @@ function loadPosts() {
           titleStart.className = "font-semibold leading-none";
           titleStart.textContent = post.title;
           const titleEnd = document.createElement('p');
-          titleEnd.className = "text-sm mx-med tabular-nums text-zinc-400";
+          titleEnd.className = "mx-med tabular-nums text-zinc-400";
           titleEnd.textContent = date;
 
           title.appendChild(titleStart);
@@ -79,11 +79,11 @@ function loadPosts() {
 
           const heading = document.createElement('div');
 
-          const headingTitle = document.createElement('p');
+          const headingTitle = document.createElement('h3');
           headingTitle.textContent = post.title;
-          headingTitle.className = "font-bold mx-small";
+          headingTitle.className = "font-bold text-2xl mx-small";
           const headingDate = document.createElement('div');
-          headingDate.className = "text-sm tabular-nums mx-small text-zinc-400";
+          headingDate.className = "tabular-nums mx-small text-zinc-400";
           headingDate.textContent = date;
 
           heading.appendChild(headingTitle);
