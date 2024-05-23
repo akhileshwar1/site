@@ -3,26 +3,32 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/clojure.min.js"></script>
     <title> Akhil Kandi </title>
   </head>
   <body class = "vertical-centered-container">
     <header class = "horizontal-left-container">
       <nav>
         <ul class = "mx-small">
-          <li><a href="#home" id = "home"><h3 class = "font-mono font-bold">akhil</h3></a></li>
-          <li><a href="#tech" id = "posts"><p class = "font-mono">posts</p></a></li>
+          <li><a href="home" id = "home"><h3 class = "font-mono text-xl font-bold">akhil</h3></a></li>
+          <li><a href="posts" id = "posts"><p class = "text-xl font-mono">posts</p></a></li>
           <li><a href="https://github.com/akhileshwar1" target="_blank" title="Visit my GitHub">
-            github
+            <p class = "font-mono text-xl">github</p>
           </a></li>
         <ul>
       </nav>
     </header>
     <div class = "vertical-left-container font-mono" id = 'home-container'>
       <img src = "sicp-eval-apply-m.jpg" class= "mx-small"> 
-      <p> <strong class = "font-bold mx-small">hi, i'm akhil</strong></p>
-      <h3 class = "font-mono text-muted-foreground text-sm mx-small"> hey, I am here babe</h3>
+      <p> <strong class = "font-bold text-xl mx-small">hi, i'm akhil</strong></p>
+      <div class = "font-mono text-muted-foreground text-sm mx-small">
+        <p> i am a programmer.</p>
+        <p> as you might have guessed, i love lisp and i owe it to SICP for turning me into who i am today.</p>
+        <p> currently, i work as a Software Engineer at SpartanPoker, where i primarily use Clojure and Java to build and scale game servers.</p>
+        <p> feel free to explore and if you find anything that interests you, do get in touch at akhilprm999@gmail.com.</p> </div>
     </div>
     <div id = "posts-page"  class = "vertical-left-container" style = "display:none;">
       <div id = 'posts-heading' class = "vertical-left-container" style = "display:none;">
@@ -34,5 +40,6 @@
     </div>
     </div>
     <script src="app.js"></script>
+    <script>hljs.highlightAll();</script>
   </body>
 </html>

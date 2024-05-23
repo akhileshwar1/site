@@ -15,7 +15,9 @@
                  [environ "1.2.0"]
                  [nrepl/nrepl "0.9.0"]
                  [cheshire "5.13.0"]
-                 [ring-cors "0.1.13"]]
+                 [ring-cors "0.1.13"]
+                 [markdown-clj "1.12.1"]
+                 [better-cond "2.1.5"]]
   :main ^:skip-aot backend.core
   :resource-paths ["resources"]
   :target-path "target/%s"

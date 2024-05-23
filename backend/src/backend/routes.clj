@@ -6,6 +6,7 @@
             [reitit.ring.coercion :as rrc]
             [reitit.ring.middleware.muuntaja :as muuntaja]
             [reitit.ring.middleware.parameters :as parameters]
+            [ring.util.response :as resp]
             [ring.middleware.cors :refer [wrap-cors]]
             [backend.middleware :refer [wrap-custom-json-response]]
             [backend.handlers :as handlers]))
@@ -15,6 +16,7 @@
   (ring/ring-handler
     (ring/router
       ["/"
+       ["ping" {:get (fn [_req] (resp/response "pong"))}]
        ["posts" {:get {:parameters {:query {:page int? :limit int?}}
                        :handler (handlers/get-posts-handler conn)}
                  :post {:handler (handlers/insert-post-handler conn)}}]

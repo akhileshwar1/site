@@ -7,6 +7,7 @@
 *.sh
 *.clj-kondo/
 *.lsp/
+*.conf
 
 # Leiningen build files
 /target/
