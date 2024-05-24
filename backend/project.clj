@@ -24,6 +24,9 @@
   :profiles {:uberjar {:aot :all
                        :jvm-opts ["-Dclojure.compiler.direct-linking=true"]}
              :dev {:source-paths ["dev"]
+                   :ring {:auto-reload? true
+                          :auto-refresh? true
+                          :nrepl {:start? true}}
                    :dependencies [[org.clojure/clojure "1.11.1"]
                                   [org.clojure/tools.namespace "0.2.3"]
                                   [org.clojure/java.classpath "0.2.0"]]

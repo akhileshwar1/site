@@ -33,15 +33,15 @@
          (vals)
          (map #(Integer/parseInt %))
          (apply (partial p/get-posts conn))
+         (map #(select-keys % [:title :date]))
          (into [])
          (response))))
 
-(defn get-post-by-id-handler
+(defn get-post-by-title-handler
   [conn]
   (fn [req]
-    (let [id (get-in req [:path-params :id])]
-      (if (p/valid-objectid? id)
-        (->> (p/get-post-by-id conn id)
-             (into {})
-             (response))
-        (bad-request "Invalid id")))))
+    (if-let [result (p/get-post-by-title conn (get-in req [:path-params :title]))]
+      (->> result
+           (into {})
+           (response))
+      (bad-request "No such post"))))

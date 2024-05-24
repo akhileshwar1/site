@@ -20,8 +20,8 @@
        ["posts" {:get {:parameters {:query {:page int? :limit int?}}
                        :handler (handlers/get-posts-handler conn)}
                  :post {:handler (handlers/insert-post-handler conn)}}]
-       ["post/:id" {:get {:parameters {:path-params {:id string?}}
-                          :handler (handlers/get-post-by-id-handler conn)}}]]
+       ["posts/:title" {:get {:parameters {:path-params {:title string?}}
+                             :handler (handlers/get-post-by-title-handler conn)}}]]
 
       ;; router data affecting all routes
       {:data {:coercion   reitit.coercion.spec/coercion

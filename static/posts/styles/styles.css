@@ -26,6 +26,10 @@ body {
   font-size: 12px;
 }
 
+
+
+
+
 h1 {
   font-size: 2em; /* Responsive based on the body font size */
 }
@@ -53,7 +57,7 @@ body {
 /* max-width for smaller screens */
 @media (max-width: 450px) {
   body {
-    font-size: 14px;
+    font-size: 12px;
     max-width: 300px;
   }
 }
@@ -61,7 +65,7 @@ body {
 /* Larger font size for larger screens */
 @media (min-width: 768px) {
   body {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 

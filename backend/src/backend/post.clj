@@ -1,6 +1,5 @@
 (ns backend.post
-  (:require [clojure.tools.logging :as log]
-            [monger.query :refer [find paginate with-collection]]
+  (:require [monger.query :refer [find paginate with-collection]]
             [monger.collection :as mc])
   (:import org.bson.types.ObjectId))
 
@@ -39,14 +38,11 @@
   [conn page limit]
   (let [result (with-collection (:db conn) "posts"
                  (find {})
-                 (paginate :page page :per-page limit))
-        _ (log/info "result is=========" result)]
+                 (paginate :page page :per-page limit))]
     (map transform-result result)))
 
-(defn get-post-by-id
-  "Gets the post with the specific id, else says missing id."
-  [conn id]
-  (when (valid-objectid? id)
-    (let [result (mc/find-one-as-map (:db conn) "posts" {:_id (ObjectId. id)})
-          _ (log/info "result is" result)]
-      (transform-result result))))
+(defn get-post-by-title
+  "Gets the post with the specific title, else says missing title."
+  [conn title]
+  (if-let [result (mc/find-one-as-map (:db conn) "posts" {:title title})]
+    (transform-result result)))
