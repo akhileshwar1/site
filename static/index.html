@@ -13,31 +13,15 @@
     <header class = "horizontal-left-container">
       <nav>
         <ul class = "mx-small">
-          <li><a href="home" id = "home"><h3 class = "font-mono text-xl font-bold">akhil</h3></a></li>
-          <li><a href="posts" id = "posts"><p class = "text-xl font-mono">posts</p></a></li>
+          <li><a href="/home" id = "home"><h3 class = "font-mono text-xl font-bold">akhil</h3></a></li>
+          <li><a href="/posts" id = "posts"><p class = "text-xl font-mono">posts</p></a></li>
           <li><a href="https://github.com/akhileshwar1" target="_blank" title="Visit my GitHub">
             <p class = "font-mono text-xl">github</p>
           </a></li>
         <ul>
       </nav>
     </header>
-    <div class = "vertical-left-container font-mono" id = 'home-container'>
-      <img src = "sicp-eval-apply-m.jpg" class= "mx-small"> 
-      <p> <strong class = "font-bold text-xl mx-small">hi, i'm akhil</strong></p>
-      <div class = "font-mono text-muted-foreground text-sm mx-small">
-        <p> i am a programmer.</p>
-        <p> as you might have guessed, i love lisp and i owe it to SICP for turning me into who i am today.</p>
-        <p> currently, i work as a Software Engineer at SpartanPoker, where i primarily use Clojure and Java to build and scale game servers.</p>
-        <p> feel free to explore and if you find anything that interests you, do get in touch at akhilprm999@gmail.com.</p> </div>
-    </div>
-    <div id = "posts-page"  class = "vertical-left-container" style = "display:none;">
-      <div id = 'posts-heading' class = "vertical-left-container" style = "display:none;">
-      <h2 class = "mx-small text-2xl font-bold">posts</h2>
-      <p class = "text-sm text-muted-foreground mx-small font-mono"> here, you can find my notes on a variety of topics.</p>
-      </div>
-    <div id = "posts-container" class = "posts-grid" style = "display:none;">
-        <!--- Posts will be loaded here -->
-    </div>
+    <div id = "app" class = "vertical-left-container">
     </div>
     <script src="app.js"></script>
     <script>hljs.highlightAll();</script>
